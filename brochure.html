@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Posicionamiento 360° — raquetaviajera.com</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: #08080f; color: #f0f0f0; min-height: 100vh; }
+
+  .hero {
+    background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 40%, #415a77 100%);
+    padding: 48px 24px 36px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(233,69,96,0.15) 0%, transparent 60%);
+  }
+  .hero-tag { font-size: 12px; letter-spacing: 4px; color: #e94560; text-transform: uppercase; margin-bottom: 14px; position: relative; }
+  .hero h1 { font-size: clamp(30px, 5vw, 56px); font-weight: 900; color: #fff; position: relative; line-height: 1.1; }
+  .hero h1 span { color: #e94560; }
+  .hero-sub { margin-top: 12px; color: #aab; font-size: 15px; position: relative; max-width: 560px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+  .hero-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 20px; position: relative; }
+  .hero-badge { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 50px; padding: 6px 16px; font-size: 12px; font-weight: 600; color: #ddd; }
+
+  .tabs { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; padding: 22px 16px 0; background: #0d0d1a; border-bottom: 1px solid #1a1a2e; }
+  .tab { padding: 9px 18px; border-radius: 50px 50px 0 0; border: 1.5px solid transparent; background: transparent; color: #888; cursor: pointer; font-size: 13px; font-weight: 600; transition: all .2s; }
+  .tab.active { background: #e94560; color: #fff; border-color: #e94560; }
+  .tab:hover:not(.active) { color: #fff; border-color: #555; }
+
+  .content { max-width: 900px; margin: 0 auto; padding: 30px 16px 60px; }
+  .section { display: none; animation: fadeIn .3s ease; }
+  .section.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  .card { background: #111120; border: 1px solid #1e1e35; border-radius: 18px; padding: 24px; margin-bottom: 18px; }
+  .card h2 { font-size: 17px; font-weight: 700; color: #e94560; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+  .card p { color: #bbb; line-height: 1.75; font-size: 14.5px; }
+
+  .statement-box {
+    background: linear-gradient(135deg, #1a0a20 0%, #0d1f40 100%);
+    border: 2px solid #e94560;
+    border-radius: 18px;
+    padding: 30px;
+    margin-bottom: 18px;
+    text-align: center;
+  }
+  .statement-box .label { font-size: 11px; letter-spacing: 3px; color: #e94560; text-transform: uppercase; margin-bottom: 12px; }
+  .statement-box .text { font-size: clamp(16px, 2.5vw, 21px); font-weight: 700; color: #fff; line-height: 1.55; }
+
+  /* Universo visual */
+  .universe { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 18px; }
+  @media(max-width:600px){ .universe { grid-template-columns: 1fr; } }
+  .universe-card {
+    border-radius: 16px; padding: 22px 18px; text-align: center;
+    border: 1px solid transparent; transition: transform .2s, border-color .2s;
+    cursor: default;
+  }
+  .universe-card:hover { transform: translateY(-4px); }
+  .u-sport { background: linear-gradient(145deg, #1a0a1a, #2a1030); border-color: #7b2fbe; }
+  .u-travel { background: linear-gradient(145deg, #0a1a2a, #0d2a3a); border-color: #0077b6; }
+  .u-food { background: linear-gradient(145deg, #1a1a0a, #2a2010); border-color: #f77f00; }
+  .universe-card .icon { font-size: 38px; margin-bottom: 12px; }
+  .universe-card h3 { font-size: 15px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+  .universe-card p { font-size: 12px; color: #aaa; line-height: 1.55; }
+  .universe-card .stat { margin-top: 10px; font-size: 13px; font-weight: 700; }
+  .u-sport .stat { color: #c77dff; }
+  .u-travel .stat { color: #48cae4; }
+  .u-food .stat { color: #f4a261; }
+
+  /* Métricas */
+  .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 18px; }
+  .metric { background: #111120; border: 1px solid #1e1e35; border-radius: 14px; padding: 18px 14px; text-align: center; }
+  .metric .num { font-size: 28px; font-weight: 900; color: #e94560; line-height: 1; }
+  .metric .unit { font-size: 11px; color: #777; margin-top: 4px; text-transform: uppercase; letter-spacing: 1px; }
+  .metric .desc { font-size: 12px; color: #aaa; margin-top: 6px; }
+
+  /* Tabla */
+  .matrix { width: 100%; border-collapse: collapse; }
+  .matrix th { background: #e94560; color: #fff; padding: 11px 14px; font-size: 13px; text-align: left; }
+  .matrix td { padding: 12px 14px; font-size: 13px; color: #ccc; border-bottom: 1px solid #1a1a2e; }
+  .matrix tr:nth-child(even) td { background: #0e0e1e; }
+  .check { color: #4caf50; font-weight: 700; }
+  .cross { color: #e94560; }
+  .half { color: #f4a261; }
+
+  /* Audience personas */
+  .personas { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+  .persona { background: #111120; border-radius: 16px; padding: 20px; border-top: 3px solid #e94560; }
+  .persona .emoji { font-size: 28px; margin-bottom: 10px; }
+  .persona h3 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+  .persona ul { list-style: none; }
+  .persona ul li { font-size: 12.5px; color: #aaa; padding: 3px 0; }
+  .persona ul li::before { content: "→ "; color: #e94560; }
+
+  /* Sponsors */
+  .sponsor-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+  .sponsor-card { background: #111120; border-radius: 16px; padding: 20px; border-left: 4px solid; }
+  .sc-sport { border-color: #7b2fbe; }
+  .sc-travel { border-color: #0077b6; }
+  .sc-food { border-color: #f77f00; }
+  .sc-lifestyle { border-color: #e94560; }
+  .sponsor-card h3 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+  .sponsor-card p { font-size: 12.5px; color: #999; line-height: 1.55; }
+  .sponsor-card .examples { margin-top: 10px; font-size: 12px; color: #666; font-style: italic; }
+
+  /* Roadmap */
+  .roadmap { position: relative; padding-left: 28px; }
+  .roadmap::before { content: ''; position: absolute; left: 9px; top: 6px; bottom: 6px; width: 2px; background: linear-gradient(to bottom, #e94560, #7b2fbe, #0077b6); }
+  .roadmap-item { position: relative; margin-bottom: 26px; }
+  .roadmap-item::before { content: ''; position: absolute; left: -23px; top: 4px; width: 14px; height: 14px; border-radius: 50%; background: #e94560; border: 2px solid #08080f; }
+  .roadmap-item h3 { font-size: 14px; font-weight: 800; color: #e94560; margin-bottom: 5px; }
+  .roadmap-item p { font-size: 13px; color: #aaa; line-height: 1.65; }
+
+  .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .tag { padding: 5px 13px; border-radius: 50px; font-size: 12px; font-weight: 600; border: 1px solid; }
+  .tag-red { border-color: #e94560; color: #e94560; }
+  .tag-purple { border-color: #7b2fbe; color: #c77dff; }
+  .tag-blue { border-color: #0077b6; color: #48cae4; }
+  .tag-orange { border-color: #f77f00; color: #f4a261; }
+
+  .highlight-box { background: linear-gradient(135deg, #1a0a0a, #2a1010); border: 1px solid #e94560; border-radius: 14px; padding: 20px; margin-top: 16px; }
+  .highlight-box p { color: #ddd; font-size: 14px; line-height: 1.7; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Posicionamiento de Marca 360°</div>
+  <h1><span>raqueta</span>viajera.com</h1>
+  <div class="hero-sub">Deporte · Viajes · Gastronomía · Lifestyle · Contenido — El Ecosistema Digital más completo de su tipo</div>
+  <div class="hero-badges">
+    <span class="hero-badge">🎾 Tenis · Pádel · Pickleball · Beach Tennis</span>
+    <span class="hero-badge">📍 900+ lugares visitados</span>
+    <span class="hero-badge">🍽️ 400+ restaurantes</span>
+    <span class="hero-badge">🗺️ Local Guide Nv. 8 · 6M vistas</span>
+    <span class="hero-badge">🎬 Conexión con influencers & Netflix</span>
+    <span class="hero-badge">🌎 Colombia · Venezuela  ·Ecuador</span>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="showSection('esencia', this)">🎯 Esencia</button>
+  <button class="tab" onclick="showSection('universo', this)">🌌 Universo</button>
+  <button class="tab" onclick="showSection('metricas', this)">📊 Métricas</button>
+  <button class="tab" onclick="showSection('audiencia', this)">👥 Audiencia</button>
+  <button class="tab" onclick="showSection('diferenciacion', this)">⚡ Diferenciación</button>
+  <button class="tab" onclick="showSection('patrocinios', this)">🤝 Patrocinios</button>
+  <button class="tab" onclick="showSection('ruta', this)">🗺️ Ruta</button>
+</div>
+
+<div class="content">
+
+  <!-- ESENCIA -->
+  <div class="section active" id="esencia">
+    <div class="statement-box">
+      <div class="label">Nueva Propuesta de Valor Central</div>
+      <div class="text">"raquetaviajera.com es el único ecosistema de contenido en LATAM que une los Deportes de Raqueta, el Turismo Educativo y la Gastronomía, convirtiendo cada competencia, viaje y experiencia en contenido de ALTO VALOR para familias, deportistas y marcas."</div>
+    </div>
+
+    <div class="card">
+      <h2>💡 Declaración de Posicionamiento Actualizada</h2>
+      <p>
+        <strong style="color:#fff">Para</strong> jóvenes deportistas, familias y marcas que quieren más que una simple plataforma deportiva,
+        <strong style="color:#fff">raquetaviajera.com</strong> es el ecosistema 360° de raquetas, viaje y lifestyle que,
+        a diferencia de los medios deportivos tradicionales o las federaciones,
+        <strong style="color:#fff">combina 12 años de visibilización de talento con una credencial única como creadora de contenido de viajes y gastronomía</strong> avalada por más de 6 millones de vistas en Google Maps, conexiones con influencers nacionales y una historia personal de resiliencia que conecta auténticamente con su audiencia.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>🏷️ Taglines</h2>
+      <p style="font-size:22px; font-weight:800; color:#fff; margin-bottom:14px;">"Donde el deporte se vuelve viaje y el viaje se vuelve historia."</p>
+      <div class="tag-row">
+        <span class="tag tag-red">Raquetas, rutas y sabores</span>
+        <span class="tag tag-purple">Talento en movimiento</span>
+        <span class="tag tag-blue">De la cancha al mundo</span>
+        <span class="tag tag-orange">El viaje que educa, el deporte que transforma</span>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <p>🔑 <strong style="color:#fff">El giro estratégico clave:</strong> Nuestra marca no solo compite  en el espacio deportivo. Ahora compite —y gana— en la intersección de <strong style="color:#e94560">deporte + viajes + gastronomía + lifestyle familiar</strong>. Este Ecosistema Digital es prácticamente inexistente en el mundo y es exactamente lo que las marcas más grandes del mercado necesitan para ser parte de un UNIVERSO ÚNICO.</p>
+    </div>
+  </div>
+
+  <!-- UNIVERSO -->
+  <div class="section" id="universo">
+    <div class="card">
+      <h2>🌌 El Universo raquetaviajera.com</h2>
+      <p>Nuestra marca opera en tres mundos que se retroalimentan y crean un ecosistema único. Esto no es una coincidencia — es nuestra ventaja competitiva más poderosa.</p>
+    </div>
+
+    <div class="universe">
+      <div class="universe-card u-sport">
+        <div class="icon">🎾</div>
+        <h3>Deporte de Raqueta</h3>
+        <p>Tenis, Pádel, Pickleball y Beach Tennis. 12 años de credibilidad, relaciones y cobertura de talento joven en Venezuela.</p>
+        <div class="stat">Núcleo histórico · 12 años</div>
+      </div>
+      <div class="universe-card u-travel">
+        <div class="icon">✈️</div>
+        <h3>Viajes & Turismo Educativo</h3>
+        <p>900+ lugares documentados en 3 países. Local Guide Nivel 8. Orientación a deportistas en alojamiento, transporte y experiencias culturales.</p>
+        <div class="stat">6M vistas · Google Maps Nv.8</div>
+      </div>
+      <div class="universe-card u-food">
+        <div class="icon">🍽️</div>
+        <h3>Gastronomía & Lifestyle</h3>
+        <p>Más de 400 restaurantes visitados y reseñados. Conocimiento profundo de la escena culinaria de Venezuela, Colombia y Ecuador.</p>
+        <div class="stat">400+ restaurantes · Foodie experta</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🔗 Por qué la combinación es tu superpoder</h2>
+      <p>
+        Un deportista joven que viaja a competir necesita saber dónde dormir, qué comer, cómo moverse y qué ver. Raqueta Viajera lleva 12 años siendo exactamente ese recurso. Ahora con la credencial de Google Maps Level 8 y más de 6 millones de vistas, eso se convierte en <strong style="color:#fff">influencia real y medible</strong> — el tipo de dato concreto que los departamentos de marketing de las grandes marcas necesitan para expandir sus horizontes.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>🎬 El Factor Netflix — Conexión Pop</h2>
+      <p>
+        La participación de DENIS RODIZ en <strong style="color:#fff">Café con Aroma de Mujer</strong> (Netflix) como José Gregorio, y las conexiones con influencers como <strong style="color:#fff">Estiwar G, María T. Barreto y Andrés Toro</strong>, le dan a la marca una dimensión de entretenimiento y cultura pop que abre puertas a marcas de consumo masivo, moda, turismo y entretenimiento — categorías que jamás llegarían a una cuenta deportiva tradicional.
+      </p>
+      <div class="tag-row">
+        <span class="tag tag-red">Netflix · Café con Aroma de Mujer</span>
+        <span class="tag tag-purple">Estiwar G</span>
+        <span class="tag tag-purple">María T. Barreto</span>
+        <span class="tag tag-purple">Andrés Toro</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MÉTRICAS -->
+  <div class="section" id="metricas">
+    <div class="card">
+      <h2>📊 Nuestras Credenciales — Datos Reales</h2>
+      <p>Estas métricas son el corazón de nuestros kit de patrocinio y alianzas estratégicas. Son concretas, verificables y diferenciadoras.</p>
+    </div>
+
+    <div class="metrics">
+      <div class="metric">
+        <div class="num">12</div>
+        <div class="unit">años</div>
+        <div class="desc">de trayectoria en Deportes de Raquetas</div>
+      </div>
+      <div class="metric">
+        <div class="num">900+</div>
+        <div class="unit">lugares</div>
+        <div class="desc">documentados en 3 países</div>
+      </div>
+      <div class="metric">
+        <div class="num">6M</div>
+        <div class="unit">vistas</div>
+        <div class="desc">en Google Maps</div>
+      </div>
+      <div class="metric">
+        <div class="num">Nv.8</div>
+        <div class="unit">Local Guide</div>
+        <div class="desc">Top tier de Google Maps</div>
+      </div>
+      <div class="metric">
+        <div class="num">400+</div>
+        <div class="unit">restaurantes</div>
+        <div class="desc">reseñados como Foodie</div>
+      </div>
+      <div class="metric">
+        <div class="num">3</div>
+        <div class="unit">países</div>
+        <div class="desc">Venezuela, Colombia, Ecuador</div>
+      </div>
+      <div class="metric">
+        <div class="num">20+</div>
+        <div class="unit">hoteles</div>
+        <div class="desc">con experiencia directa</div>
+      </div>
+      <div class="metric">
+        <div class="num">4</div>
+        <div class="unit">deportes</div>
+        <div class="desc">Tenis, Pádel, Pickleball, Beach Tennis</div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <p>💼 <strong style="color:#fff">Para el kit de patrocinio:</strong> 6 millones de vistas verificadas en Google Maps es una métrica de alcance real que supera a muchos influencers con grandes seguidores pero baja interacción. Es también completamente <em>verificable</em> por cualquier marca que lo investigue — lo que genera confianza instantánea.</p>
+    </div>
+  </div>
+
+  <!-- AUDIENCIA -->
+  <div class="section" id="audiencia">
+    <div class="card">
+      <h2>👥 Personas — Tu Audiencia Ampliada</h2>
+      <p>Con el nuevo posicionamiento,  comunidad se expande y diversifica significativamente.</p>
+    </div>
+    <div class="personas">
+      <div class="persona">
+        <div class="emoji">🎾</div>
+        <h3>El Deportista Joven</h3>
+        <ul>
+          <li>14–25 años</li>
+          <li>Quiere visibilidad y patrocinio</li>
+          <li>Viaja a torneos</li>
+          <li>Necesita guía práctica de viaje</li>
+        </ul>
+      </div>
+      <div class="persona">
+        <div class="emoji">👨‍👩‍👧</div>
+        <h3>La Familia Deportista</h3>
+        <ul>
+          <li>Padres de jugadores júnior</li>
+          <li>Confían en recomendaciones</li>
+          <li>Buscan hoteles y restaurantes</li>
+          <li>Alto poder de decisión de compra</li>
+        </ul>
+      </div>
+      <div class="persona">
+        <div class="emoji">✈️</div>
+        <h3>El Viajero Activo</h3>
+        <ul>
+          <li>Usa Google Maps para planear</li>
+          <li>Valora reseñas auténticas</li>
+          <li>Interesado en turismo local</li>
+          <li>Comunidad de travel lovers</li>
+        </ul>
+      </div>
+      <div class="persona">
+        <div class="emoji">🍽️</div>
+        <h3>El Foodie Urbano</h3>
+        <ul>
+          <li>Sigue recomendaciones gastronómicas</li>
+          <li>Millennials / Gen Z urbanos</li>
+          <li>Alta influencia en decisiones de gasto</li>
+          <li>Engagement alto en contenido de comida</li>
+        </ul>
+      </div>
+      <div class="persona">
+        <div class="emoji">🎬</div>
+        <h3>El Fan del Entretenimiento</h3>
+        <ul>
+          <li>Fans de Netflix en Venezuela</li>
+          <li>Seguidores de influencers aliados</li>
+          <li>Conexión con cultura pop</li>
+          <li>Alcance a audiencias no deportivas</li>
+        </ul>
+      </div>
+      <div class="persona">
+        <div class="emoji">🏢</div>
+        <h3>La Marca Patrocinadora</h3>
+        <ul>
+          <li>Busca audiencias premium</li>
+          <li>Quiere métricas verificables</li>
+          <li>Valora autenticidad</li>
+          <li>Necesita contenido creíble</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIFERENCIACIÓN -->
+  <div class="section" id="diferenciacion">
+    <div class="card">
+      <h2>⚡ Ventaja Competitiva Única</h2>
+      <p>Ningún competidor en LATAM tiene esta combinación. Eso es un océano azul.</p>
+    </div>
+
+    <table class="matrix">
+      <thead>
+        <tr>
+          <th>Dimensión</th>
+          <th>@raquetaviajera</th>
+          <th>Federaciones</th>
+          <th>Influencer de viajes</th>
+          <th>Food blogger</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Deporte de raqueta</td>
+          <td><span class="check">✅ 12 años</span></td>
+          <td><span class="check">✅</span></td>
+          <td><span class="cross">❌</span></td>
+          <td><span class="cross">❌</span></td>
+        </tr>
+        <tr>
+          <td>Turismo / Viajes documentados</td>
+          <td><span class="check">✅ 900+ lugares</span></td>
+          <td><span class="cross">❌</span></td>
+          <td><span class="check">✅</span></td>
+          <td><span class="half">⚠️ Parcial</span></td>
+        </tr>
+        <tr>
+          <td>Gastronomía</td>
+          <td><span class="check">✅ 400+ restaurantes</span></td>
+          <td><span class="cross">❌</span></td>
+          <td><span class="half">⚠️ Parcial</span></td>
+          <td><span class="check">✅</span></td>
+        </tr>
+        <tr>
+          <td>Credencial verificable (Google)</td>
+          <td><span class="check">✅ 6M vistas · Nv.8</span></td>
+          <td><span class="cross">❌</span></td>
+          <td><span class="cross">❌</span></td>
+          <td><span class="cross">❌</span></td>
+        </tr>
+        <tr>
+          <td>Conexión con influencers premium</td>
+          <td><span class="check">✅ Netflix + influencers CO</span></td>
+          <td><span class="cross">❌</span></td>
+          <td><span class="half">⚠️</span></td>
+          <td><span class="half">⚠️</span></td>
+        </tr>
+        <tr>
+          <td>Turismo educativo para deportistas</td>
+          <td><span class="check">✅ Único en LATAM</span></td>
+          <td><span class="cross">❌</span></td>
+          <td><span class="cross">❌</span></td>
+          <td><span class="cross">❌</span></td>
+        </tr>
+        <tr>
+          <td>Historia de resiliencia / diáspora</td>
+          <td><span class="check">✅ Auténtico y diferenciador</span></td>
+          <td><span class="cross">❌</span></td>
+          <td><span class="cross">❌</span></td>
+          <td><span class="cross">❌</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="highlight-box" style="margin-top:18px">
+      <p>🏆 <strong style="color:#fff">Conclusión:</strong> raquetaviajera.com es la única marca en LATAM que une los siete atributos anteriores. Eso no es un nicho — es un territorio de marca propio que ningún competidor puede ocupar de forma creíble.</p>
+    </div>
+  </div>
+
+  <!-- PATROCINIOS -->
+  <div class="section" id="patrocinios">
+    <div class="card">
+      <h2>🤝 Ecosistema de Patrocinio Ampliado</h2>
+      <p>Con el nuevo posicionamiento, el universo de marcas potenciales se multiplica por 4. Ya no solo son patrocinadores son ALIADOS ESTRATÉGICOS DEL MUNDO DE LOS DEPORTES.</p>
+    </div>
+
+    <div class="sponsor-grid">
+      <div class="sponsor-card sc-sport">
+        <h3>🎾 Deporte & Equipamiento</h3>
+        <p>Marcas de raquetas, indumentaria, calzado deportivo, academias, organizadores de torneos.</p>
+        <div class="examples">Wilson, Head, Bullpadel, Nike, Adidas, academias privadas VE</div>
+      </div>
+      <div class="sponsor-card sc-travel">
+        <h3>✈️ Viajes & Hospitalidad</h3>
+        <p>Hoteles, aerolíneas, apps de viaje, agencias de turismo, destinos turísticos LATAM.</p>
+        <div class="examples">Hoteles boutique, LATAM Turismo, aerolíneas nacionales e internacionales</div>
+      </div>
+      <div class="sponsor-card sc-food">
+        <h3>🍽️ Gastronomía & Food</h3>
+        <p>Restaurantes, apps de delivery, marcas de alimentos, suplementos deportivos, bebidas.</p>
+        <div class="examples">Restaurantes locales, marcas de agua, suplementos nutricionales</div>
+      </div>
+      <div class="sponsor-card sc-lifestyle">
+        <h3>🌟 Lifestyle & Entretenimiento</h3>
+        <p>Marcas de moda casual, tecnología, cuidado personal, plataformas digitales, bancos.</p>
+        <div class="examples">Fintech VE, marcas de cuidado personal, apps de entretenimiento</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:4px">
+      <h2>📋 Estructura del Media Kit</h2>
+      <p>
+        Nuestro Media Kit incluye: <strong style="color:#fff">(1)</strong> historia de la marca y propósito, <strong style="color:#fff">(2)</strong> métricas verificadas (Google Maps 6M, 900+ lugares, 400+ restaurantes), <strong style="color:#fff">(3)</strong> descripción de las 3 audiencias con poder de compra, <strong style="color:#fff">(4)</strong> paquetes de colaboración (contenido, menciones, activaciones, cobertura de torneos), <strong style="color:#fff">(5)</strong> conexiones con influencers y el factor Netflix como prueba social de alto nivel.
+      </p>
+    </div>
+  </div>
+
+  <!-- HOJA DE RUTA -->
+  <div class="section" id="ruta">
+    <div class="card">
+      <h2>🗺️ Hoja de Ruta del Relanzamiento 360°</h2>
+      <p>Un plan que aprovecha todo el Ecosistema Digital para sumarnos a las nuevas Tendencias .</p>
+    </div>
+
+    <div class="roadmap">
+      <div class="roadmap-item">
+        <h3>Fase 1 — Sumar empresas con VISIÓN FUTURISTA(Mes 1)</h3>
+        <p>Construir alianzas estratégicas, viables, sostenibles y futuristas de Alto Target, que máximicen el potencial de la Comunidad Raqueta Viajera con la nueva identidad 360° (deporte + viaje + gastronomía).</p>
+      </div>
+      <div class="roadmap-item">
+        <h3>Fase 2 — Narrativa de Comunicación (Mes 1–3)</h3>
+        <p>Comunicar de manera orgánica y auténtica qué significa ser parte de Raqueta Viajera como el único Ecosistema digital de Economía Colaborativa de LATAM.</p>
+      </div>
+      <div class="roadmap-item">
+        <h3>Fase 3 — Activación de Contenido (Mes 2–4)</h3>
+     <p>Lanzar 3 series de contenido en paralelo: "Raqueta en Ruta" (torneos + turismo), "La Mesa del Campeón" (gastronomía + deportistas), y "El Mapa del Talento" (perfiles de jóvenes en los 4 deportes). Documentar cada salida con foco en Google Maps para fortalecer la credencial Local Guide.</p>
+      </div>
+      <div class="roadmap-item">
+        <h3>Fase 4 — Evento Ancla (Mes 4–7)</h3>
+        <p>Organizar el primer evento Raqueta Viajera de la nueva era: torneo multicancha + experiencia gastronómica + guía turística del destino. Un evento que integre los 3 pilares de la marca en una experiencia única para deportistas, familias y sponsors.</p>
+      </div>
+      <div class="roadmap-item">
+        <h3>Fase 5 — Expansión LATAM (Mes 8+)</h3>
+        <p>Con el nuevo modelo validado en Colombia, expandir a Venezuela u otro país que desee sumarse al Ecosistema Raqueta Viajera. Aprovechar la diáspora venezolana como audiencia transnacional. Proyectar la marca a nivel LATAM como la referencia en Turismo Deportivo y Educativo de Raquetas.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function showSection(id, el) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  el.classList.add('active');
+}
+</script>
+</body>
+</html>
