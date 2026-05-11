@@ -58,3 +58,9 @@ function showTienda(ev,panel){
   document.getElementById('tienda-'+panel).classList.add('active');
   ev.target.classList.add('active');
 }
+function toggleMenu() {
+  var nav = document.querySelector('.nav-links');
+  var btn = document.querySelector('.hamburger');
+  nav.classList.toggle('open');
+  btn.classList.toggle('active');
+}
