@@ -89,7 +89,7 @@ nav {
 .nav-links {
     display: flex;
     gap: 4px;
-    list-style: none;
+    list-style: none !important;
 }
 
 .nav-links a {
@@ -3396,7 +3396,7 @@ footer {
 @media (max-width: 768px) {
   .hamburger { display: flex; }
   .nav-links {
-    display: none;
+    display: none !important;
     position: fixed;
     top: 0;
     left: 0;
@@ -3409,7 +3409,7 @@ footer {
     gap: 32px;
     z-index: 1000;
   }
-  .nav-links.open { display: flex; }
+  .nav-links.open { display: flex !important; }
   .nav-links li a {
     font-size: 24px;
     color: var(--white);
