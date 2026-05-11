@@ -59,31 +59,20 @@ function showTienda(ev,panel){
   ev.target.classList.add('active');
 }
 function toggleMenu() {
-  var nav = document.getElementById('navMenu');
-  var btn = document.querySelector('.hamburger');
-  var isOpen = nav.style.display === 'flex';
-  nav.style.display = isOpen ? 'none' : 'flex';
-  nav.style.flexDirection = 'column';
-  nav.style.position = 'fixed';
-  nav.style.top = '0';
-  nav.style.left = '0';
-  nav.style.width = '100%';
-  nav.style.height = '100vh';
-  nav.style.background = '#080808';
-  nav.style.alignItems = 'center';
-  nav.style.justifyContent = 'center';
-  nav.style.gap = '32px';
-  nav.style.zIndex = '1000';
-  btn.classList.toggle('active');
-  document.body.style.overflow = isOpen ? '' : 'hidden';
+  const hamburger = document.querySelector('.hamburger');
+  const navMenu = document.getElementById('navMenu');
+
+  hamburger.classList.toggle('active');
+  navMenu.classList.toggle('open');
+  document.body.style.overflow = navMenu.classList.contains('open') ? 'hidden' : '';
 }
 
 document.querySelectorAll('.nav-links a').forEach(function(link) {
   link.addEventListener('click', function() {
-    var nav = document.getElementById('navMenu');
-    var btn = document.querySelector('.hamburger');
-    nav.style.display = 'none';
-    btn.classList.remove('active');
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.getElementById('navMenu');
+    hamburger.classList.remove('active');
+    navMenu.classList.remove('open');
     document.body.style.overflow = '';
   });
 });
