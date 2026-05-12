@@ -2565,9 +2565,9 @@ footer {
 }
 
 .patro-logo img {
-    width: 82%;
-    height: auto;
-    object-fit: contain;
+  width: 140px;
+  height: auto;
+  filter: brightness(0) invert(1);
 }
 
 .patro-nombre {
