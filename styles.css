@@ -2526,14 +2526,15 @@ footer {
     background: var(--black2);
     border: 1px solid var(--gray1);
     border-radius: 8px;
-    padding: 4px;
+    padding: 2px;
     text-align: center;
     transition: border-color var(--transition), transform var(--transition);
     position: relative;
 }
 
 .patro-slot.ocupado {
-    border-color: rgba(192, 57, 43, .25);
+  border-color: rgba(192, 57, 43, .25);
+  aspect-ratio: 16/9;
 }
 
 .patro-slot.ocupado:hover {
