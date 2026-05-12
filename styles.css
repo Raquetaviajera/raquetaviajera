@@ -2552,22 +2552,16 @@ footer {
 }
 
 .patro-logo {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    background: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 14px;
-    border: 1px solid var(--gray1);
-    overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 14px;
 }
 
 .patro-logo img {
-  width: 140px;
+  width: 100%;
   height: auto;
-  filter: brightness(0) invert(1);
+  border-radius: 6px;
 }
 
 .patro-nombre {
