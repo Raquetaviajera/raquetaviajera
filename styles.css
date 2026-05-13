@@ -2562,7 +2562,7 @@ footer {
 }
 .patro-logo img {
     width: 100%;
-    max-width: 260px;
+    max-width: 320px;
     height: auto;
     object-fit: contain;
     display: block;
