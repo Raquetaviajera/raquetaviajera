@@ -2554,8 +2554,8 @@ footer {
 
 .patro-logo img {
     width: 100%;
-    max-width: 200px;
-    height: auto;
+    max-width: 100px;
+    height: 120px;
     object-fit: contain;
     display: block;
 }
