@@ -246,7 +246,7 @@ nav {
     padding: 12px 26px;
     border-radius: 3px;
     border: none;
-    letter-spacing: .08em;
+    letter-spacing: .08em;https://github.com/Raquetaviajera/raquetaviajera/blob/main/styles.css
     text-transform: uppercase;
     cursor: pointer;
     text-decoration: none;
@@ -2554,13 +2554,13 @@ footer {
 
 .patro-logo img {
     width: 100%;
-    max-width: 160px;
+    max-width: 150px;
     height: auto;
     object-fit: contain;
     display: block;
 }
 
-.patro-logo img bord {
+.patro-logo img borde {
   width: 100%;
   height: auto;
   border-radius: 6px;
