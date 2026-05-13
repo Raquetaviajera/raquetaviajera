@@ -2552,11 +2552,12 @@ footer {
     transform: translateY(-3px);
 }
 
-.patro-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 14px;
+.patro-logo img {
+    width: 100%;
+    max-width: 160px;
+    height: auto;
+    object-fit: contain;
+    display: block;
 }
 
 .patro-logo img {
@@ -3352,9 +3353,15 @@ footer {
     opacity: .5;
 }
 
-@media(max-width:600px) {
+@media (max-width: 600px) {
     .sport-photo-grid {
         grid-template-columns: 1fr 1fr;
+    }
+    .patro-logo img {
+        max-width: 120px;
+    }
+    .patros-grid {
+        grid-template-columns: 1fr;
     }
 
     .ropa-grid {
