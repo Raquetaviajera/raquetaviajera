@@ -2560,7 +2560,7 @@ footer {
     display: block;
 }
 
-.patro-logo img {
+.patro-logo img bord {
   width: 100%;
   height: auto;
   border-radius: 6px;
