@@ -2510,159 +2510,123 @@ footer {
     border-radius: 2px;
 }
 
-/* ═══ PATROCINADORES ═══ */
+/* === PATROCINADORES === */
 #patrocinadores {
-    background: var(--black3);
+  background: var(--black3);
 }
 
-.patros-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 16px;
-    margin-bottom: 40px;
+.patros-sublabel {
+  font-family: sans-serif;
+  font-size: 11px;
+  color: #666;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 20px;
 }
 
-.patro-slot {
-    background: var(--black2);
-    border: 1px solid var(--gray1);
-    border-radius: 8px;
-    padding: 2px;
-    text-align: center;
-    transition: border-color var(--transition), transform var(--transition);
-    position: relative;
+.patros-logo-area {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  margin-bottom: 52px;
+  flex-wrap: wrap;
 }
 
-.patro-slot.ocupado {
-  border-color: rgba(192, 57, 43, .25);
-  aspect-ratio: 16/9;
+.patros-logo-hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .25s, filter .25s;
+  filter: brightness(1.05);
 }
 
-.patro-slot.ocupado:hover {
-    transform: translateY(-3px);
-    border-color: rgba(192, 57, 43, .5);
+.patros-logo-hero:hover {
+  transform: scale(1.06);
+  filter: brightness(1.3);
 }
 
-.patro-slot.disponible {
-    border: 1px dashed var(--gray2);
-    cursor: pointer;
+.patros-logo-hero img {
+  height: 68px;
+  max-width: 220px;
+  object-fit: contain;
 }
 
-.patro-slot.disponible:hover {
-    border-color: var(--red);
-    transform: translateY(-3px);
-}
-        
-.patro-logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 16px;
-    margin: 0 auto 14px;
-}
-.patro-logo img {
-    width: 100%;
-    max-width: 180px;
-    height: auto;
-    object-fit: contain;
-    display: block;
-
+.patros-slots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 52px;
 }
 
-.patro-nombre {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--white);
-    margin-bottom: 4px;
+.patros-slot-disponible {
+  border: 1px dashed #3a3a3a;
+  border-radius: 8px;
+  padding: 28px 16px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color .2s, transform .2s;
+  position: relative;
+  background: #161616;
 }
 
-.patro-tipo {
-    font-size: 10px;
-    color: var(--red);
-    text-transform: uppercase;
-    letter-spacing: .1em;
-    margin-bottom: 10px;
+.patros-slot-disponible:hover {
+  border-color: var(--red);
+  transform: translateY(-3px);
 }
 
-.patro-desde {
-    font-size: 10px;
-    color: var(--gray3);
+.patros-badge-min {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-family: sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--red);
+  border: 1px solid rgba(192,57,43,.35);
+  padding: 2px 7px;
+  border-radius: 3px;
 }
 
-.patro-disponible-txt {
-    font-size: 12px;
-    color: var(--gray3);
-    margin-bottom: 14px;
-    line-height: 1.6;
+.patros-slot-plus {
+  font-size: 26px;
+  color: #3a3a3a;
+  margin: 10px 0 8px;
+  line-height: 1;
 }
 
-.patro-disponible-ico {
-    font-size: 36px;
-    margin-bottom: 10px;
-    opacity: .3;
+.patros-disponible-txt {
+  font-family: sans-serif;
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 16px;
+  line-height: 1.4;
 }
 
-.patro-badge-min {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 8px;
-    color: var(--gold);
-    border: 1px solid rgba(201, 168, 76, .3);
-    padding: 2px 7px;
-    border-radius: 2px;
-    text-transform: uppercase;
-    letter-spacing: .1em;
+.patros-aval-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 32px;
+  border-top: 1px solid #1e1e1e;
+  flex-wrap: wrap;
 }
 
-.patros-cta {
-    background: linear-gradient(135deg, rgba(192, 57, 43, .12), rgba(192, 57, 43, .04));
-    border: 1px solid rgba(192, 57, 43, .25);
-    border-radius: 10px;
-    padding: 40px;
-    text-align: center;
+.patros-aval-label {
+  font-family: sans-serif;
+  font-size: 11px;
+  color: #444;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-weight: 600;
 }
 
-.patros-cta h3 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 30px;
-    letter-spacing: .05em;
-    margin-bottom: 10px;
-}
-
-.patros-cta p {
-    font-size: 13px;
-    color: var(--gray4);
-    line-height: 1.7;
-    max-width: 500px;
-    margin: 0 auto 22px;
-}
-
-.patros-beneficios {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin-bottom: 26px;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.patro-benefit {
-    background: var(--black2);
-    border: 1px solid var(--gray1);
-    border-radius: 6px;
-    padding: 14px 12px;
-    font-size: 12px;
-    color: var(--gray4);
-    line-height: 1.5;
-}
-
-.patro-benefit strong {
-    display: block;
-    color: var(--white);
-    font-size: 13px;
-    margin-bottom: 4px;
+.patros-aval-nombre {
+  font-family: sans-serif;
+  font-size: 13px;
+  color: #666;
 }
 
 /* ═══ PROSPECTOS DEPORTIVOS ═══ */
