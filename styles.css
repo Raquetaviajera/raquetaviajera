@@ -2547,16 +2547,17 @@ footer {
 }
 
 .patros-logo-hero img {
-  height: 68px;
-  max-width: 220px;
+  height: 48px;
+  max-width: 160px;
   object-fit: contain;
 }
 
 .patros-slots-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   margin-bottom: 52px;
+  width: 100%;
 }
 
 .patros-slot-disponible {
