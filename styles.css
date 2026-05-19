@@ -2563,7 +2563,7 @@ footer {
 .patros-slot-disponible {
   border: 1px dashed #3a3a3a;
   border-radius: 8px;
-  padding: 28px 16px 20px;
+  padding: 8px 16px 8px;
   text-align: center;
   cursor: pointer;
   transition: border-color .2s, transform .2s;
