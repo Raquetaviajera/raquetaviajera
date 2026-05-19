@@ -3326,7 +3326,7 @@ footer {
         grid-template-columns: 1fr 1fr;
     }
     .patro-logo img {
-        max-width: 120px;
+        max-width: 150px;
     }
     .patros-grid {
         grid-template-columns: 1fr;
