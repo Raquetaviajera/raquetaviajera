@@ -2547,7 +2547,7 @@ footer {
 }
 
 .patros-logo-hero img {
-  height: 68px;
+  height: 70px;
   max-width: 220px;
   object-fit: contain;
 }
@@ -2557,6 +2557,7 @@ footer {
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   margin-bottom: 52px;
+  width: 100%  
 }
 
 .patros-slot-disponible {
