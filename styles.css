@@ -2555,7 +2555,6 @@ footer {
 .patros-slots-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
   margin-bottom: 52px;
   width: 100%  
 }
