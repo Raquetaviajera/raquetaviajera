@@ -498,7 +498,7 @@ window.addEventListener('DOMContentLoaded', function() {
         // Desplazar rotación
         var order = (cIdx - idx + cards.length) % cards.length;
         c.style.zIndex = cards.length - order;
-        c.style.transform = 'translateY(' + (-15 * order) + 'px) scale(' + (1 - 0.05 * order) + ') rotate(' + (order % 2 === 0 ? order : -order) + 'deg)';
+        c.style.transform = 'translateY(' + (18 * order) + 'px) scale(' + (1 - 0.03 * order) + ') rotate(' + (order % 2 === 0 ? order : -order) + 'deg)';
         c.style.opacity = order === cards.length - 1 ? 0 : 1;
       });
       cards[idx].classList.add('active');
