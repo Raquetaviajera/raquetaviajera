@@ -146,11 +146,10 @@ nav {
 
 /* HERO */
 #hero {
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 120px 40px 80px;
+    padding: 140px 40px 60px;
     position: relative;
     overflow: hidden;
 }
