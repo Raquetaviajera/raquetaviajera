@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -141,6 +141,112 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 </section>
+
+
+<!-- ================================================
+     GALERÍA VIAJERA
+     Esta sección se llena automáticamente con
+     JavaScript (función initVisualGallery en script.js).
+     Los datos de cada foto están en window.GALERIA_DATOS
+     al principio del archivo script.js — fácil de editar.
+     ================================================ -->
+<section id="galeria-viajera" class="content-section">
+  <div class="sec-inner">
+
+    <!-- Encabezado de la sección -->
+    <span class="sec-eyebrow reveal">Contenido real · LATAM</span>
+    <h2 class="sec-title reveal">GALERÍA<br>VIAJERA.</h2>
+    <div class="red-bar reveal"></div>
+    <p class="sec-desc reveal">Más de 900 lugares documentados con cámara propia. Canchas, restaurantes, hoteles y cultura en Venezuela, Colombia y Ecuador. Haz clic en cualquier foto para ver la reseña completa.</p>
+
+    <!-- ============================================
+         VIDEO TEASER CARD — Tarjeta estilo glassmorphism
+         El efecto "cristal" se logra con backdrop-filter
+         en el CSS (.vtc-glass en styles.css)
+         ============================================ -->
+    <div class="video-teaser-card reveal">
+      <div class="vtc-glass">
+
+        <!-- Botón de Play (columna izquierda, fondo rojo) -->
+        <div class="vtc-play-btn" onclick="window.open('https://youtube.com/@raquetaviajera', '_blank')" title="Ver canal de YouTube">
+          <div class="vtc-play-icon">&#9654;</div>
+        </div>
+
+        <!-- Texto central: título, descripción y enlace -->
+        <div class="vtc-content">
+          <div class="vtc-tag">YouTube &middot; 75.7% Retenci&oacute;n</div>
+          <div class="vtc-title">RAQUETA VIAJERA<br><span>EN ACCI&Oacute;N.</span></div>
+          <div class="vtc-desc">La &uacute;nica voz en espa&ntilde;ol del turismo deportivo en LATAM. Canchas, destinos, gastronom&iacute;a y deporte de raqueta &mdash; todo en un solo canal.</div>
+          <a href="https://youtube.com/@raquetaviajera" target="_blank" rel="noopener" class="vtc-cta">Ver Canal &#8594;</a>
+        </div>
+
+        <!-- Estadísticas (columna derecha) -->
+        <div class="vtc-stats">
+          <div class="vtc-stat"><span>75.7%</span>Retenci&oacute;n</div>
+          <div class="vtc-stat"><span>5.9M</span>Google Maps</div>
+          <div class="vtc-stat"><span>900+</span>Destinos</div>
+        </div>
+
+      </div>
+    </div>
+    <!-- Fin video-teaser-card -->
+
+    <!-- ============================================
+         FILTROS DE CATEGORÍA
+         Cada botón llama a filterGallery() en script.js.
+         El parámetro es el valor "category" de cada
+         item en window.GALERIA_DATOS (script.js línea 14).
+         ============================================ -->
+    <div class="gal-filter-tabs reveal">
+      <!-- "Todos" muestra todas las fotos sin filtrar -->
+      <button class="gal-filter-btn active"
+              data-category="todos"
+              onclick="filterGallery('todos', this)">
+        Todos
+      </button>
+      <!-- "Acción" filtra las canchas deportivas -->
+      <button class="gal-filter-btn"
+              data-category="canchas"
+              onclick="filterGallery('canchas', this)">
+        &#127926; Acci&oacute;n
+      </button>
+      <!-- "Canchas" también filtra la categoría canchas -->
+      <button class="gal-filter-btn"
+              data-category="hoteles"
+              onclick="filterGallery('hoteles', this)">
+        &#127968; Hospedaje
+      </button>
+      <!-- "Gastronomía" filtra los restaurantes -->
+      <button class="gal-filter-btn"
+              data-category="restaurantes"
+              onclick="filterGallery('restaurantes', this)">
+        &#127860; Gastronom&iacute;a
+      </button>
+      <!-- "Recreación" filtra cultura y turismo -->
+      <button class="gal-filter-btn"
+              data-category="recreacion"
+              onclick="filterGallery('recreacion', this)">
+        &#127958; Recreaci&oacute;n
+      </button>
+    </div>
+    <!-- Fin filtros -->
+
+    <!-- ============================================
+         GRID DE LA GALERÍA
+         Este div empieza VACÍO a propósito.
+         La función initVisualGallery() en script.js
+         lo rellena automáticamente al cargar la página
+         usando los datos de window.GALERIA_DATOS.
+         Para agregar fotos nuevas, edita script.js.
+         ============================================ -->
+    <div class="gal-grid" id="visual-gallery-grid">
+      <!-- Las tarjetas de fotos se insertan aquí con JavaScript -->
+    </div>
+    <!-- Fin galería grid -->
+
+  </div>
+</section>
+
 
 <!-- DESTINOS -->
 <section id="destinos" class="content-section" style="background:var(--black2);">
@@ -830,110 +936,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       var galleryData_beach = [{'name': 'Agregar foto 1', 'stars': 'â˜…â˜…â˜…â˜…â˜…', 'resena': 'ReseÃ±a pendiente â€” haz clic en editar el HTML para agregar tu reseÃ±a.', 'emoji': 'ðŸ“¸'}, {'name': 'Agregar foto 2', 'stars': 'â˜…â˜…â˜…â˜…â˜…', 'resena': 'ReseÃ±a pendiente.', 'emoji': 'ðŸ“¸'}, {'name': 'Agregar foto 3', 'stars': 'â˜…â˜…â˜…â˜…â˜†', 'resena': 'ReseÃ±a pendiente.', 'emoji': 'ðŸ“¸'}, {'name': 'Agregar foto 4', 'stars': 'â˜…â˜…â˜…â˜…â˜…', 'resena': 'ReseÃ±a pendiente.', 'emoji': 'ðŸ“¸'}];
       </script>
     </div>
-  </div>
-</section>
-
-<!-- ================================================
-     GALERÍA VIAJERA
-     Esta sección se llena automáticamente con
-     JavaScript (función initVisualGallery en script.js).
-     Los datos de cada foto están en window.GALERIA_DATOS
-     al principio del archivo script.js — fácil de editar.
-     ================================================ -->
-<section id="galeria-viajera" class="content-section">
-  <div class="sec-inner">
-
-    <!-- Encabezado de la sección -->
-    <span class="sec-eyebrow reveal">Contenido real · LATAM</span>
-    <h2 class="sec-title reveal">GALERÍA<br>VIAJERA.</h2>
-    <div class="red-bar reveal"></div>
-    <p class="sec-desc reveal">Más de 900 lugares documentados con cámara propia. Canchas, restaurantes, hoteles y cultura en Venezuela, Colombia y Ecuador. Haz clic en cualquier foto para ver la reseña completa.</p>
-
-    <!-- ============================================
-         VIDEO TEASER CARD — Tarjeta estilo glassmorphism
-         El efecto "cristal" se logra con backdrop-filter
-         en el CSS (.vtc-glass en styles.css)
-         ============================================ -->
-    <div class="video-teaser-card reveal">
-      <div class="vtc-glass">
-
-        <!-- Botón de Play (columna izquierda, fondo rojo) -->
-        <div class="vtc-play-btn" onclick="window.open('https://youtube.com/@raquetaviajera', '_blank')" title="Ver canal de YouTube">
-          <div class="vtc-play-icon">&#9654;</div>
-        </div>
-
-        <!-- Texto central: título, descripción y enlace -->
-        <div class="vtc-content">
-          <div class="vtc-tag">YouTube &middot; 75.7% Retenci&oacute;n</div>
-          <div class="vtc-title">RAQUETA VIAJERA<br><span>EN ACCI&Oacute;N.</span></div>
-          <div class="vtc-desc">La &uacute;nica voz en espa&ntilde;ol del turismo deportivo en LATAM. Canchas, destinos, gastronom&iacute;a y deporte de raqueta &mdash; todo en un solo canal.</div>
-          <a href="https://youtube.com/@raquetaviajera" target="_blank" rel="noopener" class="vtc-cta">Ver Canal &#8594;</a>
-        </div>
-
-        <!-- Estadísticas (columna derecha) -->
-        <div class="vtc-stats">
-          <div class="vtc-stat"><span>75.7%</span>Retenci&oacute;n</div>
-          <div class="vtc-stat"><span>5.9M</span>Google Maps</div>
-          <div class="vtc-stat"><span>900+</span>Destinos</div>
-        </div>
-
-      </div>
-    </div>
-    <!-- Fin video-teaser-card -->
-
-    <!-- ============================================
-         FILTROS DE CATEGORÍA
-         Cada botón llama a filterGallery() en script.js.
-         El parámetro es el valor "category" de cada
-         item en window.GALERIA_DATOS (script.js línea 14).
-         ============================================ -->
-    <div class="gal-filter-tabs reveal">
-      <!-- "Todos" muestra todas las fotos sin filtrar -->
-      <button class="gal-filter-btn active"
-              data-category="todos"
-              onclick="filterGallery('todos', this)">
-        Todos
-      </button>
-      <!-- "Acción" filtra las canchas deportivas -->
-      <button class="gal-filter-btn"
-              data-category="canchas"
-              onclick="filterGallery('canchas', this)">
-        &#127926; Acci&oacute;n
-      </button>
-      <!-- "Canchas" también filtra la categoría canchas -->
-      <button class="gal-filter-btn"
-              data-category="hoteles"
-              onclick="filterGallery('hoteles', this)">
-        &#127968; Hospedaje
-      </button>
-      <!-- "Gastronomía" filtra los restaurantes -->
-      <button class="gal-filter-btn"
-              data-category="restaurantes"
-              onclick="filterGallery('restaurantes', this)">
-        &#127860; Gastronom&iacute;a
-      </button>
-      <!-- "Recreación" filtra cultura y turismo -->
-      <button class="gal-filter-btn"
-              data-category="recreacion"
-              onclick="filterGallery('recreacion', this)">
-        &#127958; Recreaci&oacute;n
-      </button>
-    </div>
-    <!-- Fin filtros -->
-
-    <!-- ============================================
-         GRID DE LA GALERÍA
-         Este div empieza VACÍO a propósito.
-         La función initVisualGallery() en script.js
-         lo rellena automáticamente al cargar la página
-         usando los datos de window.GALERIA_DATOS.
-         Para agregar fotos nuevas, edita script.js.
-         ============================================ -->
-    <div class="gal-grid" id="visual-gallery-grid">
-      <!-- Las tarjetas de fotos se insertan aquí con JavaScript -->
-    </div>
-    <!-- Fin galería grid -->
-
   </div>
 </section>
 
