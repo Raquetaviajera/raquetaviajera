@@ -111,6 +111,30 @@ window.GALERIA_DATOS = [
 ];
 
 // ============================================
+// 1.5. RECOMENDACIONES DEL MES (Gastronomía)
+// ============================================
+window.RECOMENDACIONES_GASTRONOMIA = [
+  {
+    image: 'inti2.webp',
+    name: 'Restaurante Peruano Inti',
+    stars: '★★★★★',
+    resena: 'Una propuesta gastronómica peruana de alta fidelidad. El ceviche y la causa limeña son insuperables.'
+  },
+  {
+    image: 'casa-mia.webp',
+    name: 'Restaurante Casa Mía',
+    stars: '★★★★★',
+    resena: 'Sabor local e internacional en un ambiente acogedor. Destacan sus pastas y carnes a la parrilla.'
+  },
+  {
+    image: 'cactus-bqt.webp',
+    name: 'Cactus Resto-bar',
+    stars: '★★★★☆',
+    resena: 'Excelente ambiente al aire libre para disfrutar después del entrenamiento de tenis. Coctelería de autor recomendada.'
+  }
+];
+
+// ============================================
 // 2. GALERÍAS DE DEPORTES CON RAQUETA (Lightbox)
 // ============================================
 // Estos son los datos de las fotos de la sección "MUNDO DE LAS RAQUETAS".
@@ -374,6 +398,22 @@ function filterGallery(category, buttonEl) {
   });
   buttonEl.classList.add('active');
   
+  // Mostrar u ocultar la recomendación destacada según la categoría
+  var recHero = document.getElementById('recomendacion-hero');
+  if (recHero) {
+    if (category === 'restaurantes') {
+      recHero.style.display = 'flex';
+      // Iniciar el carrusel de recomendaciones si no está corriendo
+      initRecomendacionRotativa();
+    } else {
+      recHero.style.display = 'none';
+      if (window.recInterval) {
+        clearInterval(window.recInterval);
+        window.recInterval = null;
+      }
+    }
+  }
+
   // Filtrar tarjetas
   var cards = document.querySelectorAll('.gal-card');
   var count = 0;
@@ -388,6 +428,54 @@ function filterGallery(category, buttonEl) {
       card.style.display = 'none';
     }
   });
+}
+
+var currentRecIdx = 0;
+function initRecomendacionRotativa() {
+  if (window.recInterval) return; // ya está corriendo
+  
+  var recData = window.RECOMENDACIONES_GASTRONOMIA;
+  if (!recData || recData.length === 0) return;
+  
+  var recImg = document.getElementById('rec-img');
+  var recName = document.getElementById('rec-name');
+  var recStars = document.getElementById('rec-stars');
+  var recResena = document.getElementById('rec-resena');
+  var recContent = document.getElementById('rec-content');
+  
+  if (!recImg || !recName) return;
+  
+  // Función para actualizar los datos con animación de fade
+  function updateRec() {
+    // Añadir clase fade-out
+    recImg.classList.add('fade-out');
+    recContent.classList.add('fade-out');
+    
+    setTimeout(function() {
+      // Cambiar datos
+      currentRecIdx = (currentRecIdx + 1) % recData.length;
+      var item = recData[currentRecIdx];
+      
+      recImg.src = item.image;
+      recName.textContent = item.name;
+      recStars.textContent = item.stars;
+      recResena.textContent = item.resena;
+      
+      // Quitar fade-out para hacer fade-in
+      recImg.classList.remove('fade-out');
+      recContent.classList.remove('fade-out');
+    }, 500); // 500ms debe coincidir con la transición en CSS
+  }
+  
+  // Mostrar la primera recomendación al instante
+  var item = recData[currentRecIdx];
+  recImg.src = item.image;
+  recName.textContent = item.name;
+  recStars.textContent = item.stars;
+  recResena.textContent = item.resena;
+  
+  // Rotar cada 6 segundos
+  window.recInterval = setInterval(updateRec, 6000);
 }
 
 

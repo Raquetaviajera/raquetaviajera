@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -238,6 +238,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
          usando los datos de window.GALERIA_DATOS.
          Para agregar fotos nuevas, edita script.js.
          ============================================ -->
+        <!-- RECOMENDACION DEL MES -->
+    <div id="recomendacion-hero" class="recomendacion-hero" style="display: none;">
+      <div class="rec-img-container">
+        <img id="rec-img" src="" alt="RecomendaciÃ³n del Mes">
+      </div>
+      <div id="rec-content" class="rec-info-container">
+        <div class="rec-badge">â­ RECOMENDACIÃ“N DEL MES</div>
+        <h3 id="rec-name" class="rec-name"></h3>
+        <div id="rec-stars" class="rec-stars"></div>
+        <p id="rec-resena" class="rec-resena"></p>
+        <button class="rec-btn">Saber mÃ¡s</button>
+      </div>
+    </div>
+
     <div class="gal-grid" id="visual-gallery-grid">
       <!-- Las tarjetas de fotos se insertan aquÃ­ con JavaScript -->
     </div>
@@ -1758,4 +1772,5 @@ function toggleChat(){
  <script src="script.js"></script>
 </body>
 </html>
+
 
