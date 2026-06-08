@@ -1,0 +1,9 @@
+﻿diff --git a/index.html.bak b/index.html
+index f8c9229..2459ead 100644
+--- a/index.html.bak
++++ b/index.html
+@@ -1,3 +1,3 @@
+-<!DOCTYPE html>
++´╗┐<!DOCTYPE html>
+ <html lang="es">
+ <head>
