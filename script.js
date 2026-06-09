@@ -115,22 +115,28 @@ window.GALERIA_DATOS = [
 // ============================================
 window.RECOMENDACIONES_GASTRONOMIA = [
   {
-    image: 'inti2.webp',
-    name: 'Restaurante Peruano Inti',
+    image: 'la_bruja2.webp',
+    name: 'Restaurante La Bruja',
     stars: '★★★★★',
-    resena: 'Una propuesta gastronómica peruana de alta fidelidad. El ceviche y la causa limeña son insuperables.'
+    resena: 'Una experiencia gastronómica mágica con sabores únicos y una atención de primera.'
   },
   {
-    image: 'casa-mia.webp',
-    name: 'Restaurante Casa Mía',
+    image: 'renne_peruvian.webp',
+    name: 'Renne Peruvian',
     stars: '★★★★★',
-    resena: 'Sabor local e internacional en un ambiente acogedor. Destacan sus pastas y carnes a la parrilla.'
+    resena: 'Auténtica comida peruana que transporta tus sentidos directamente a los sabores de Lima.'
   },
   {
-    image: 'cactus-bqt.webp',
-    name: 'Cactus Resto-bar',
+    image: 'la_kasta.webp',
+    name: 'La Kasta',
     stars: '★★★★☆',
-    resena: 'Excelente ambiente al aire libre para disfrutar después del entrenamiento de tenis. Coctelería de autor recomendada.'
+    resena: 'Un lugar increíble para compartir y disfrutar de excelentes platos en un ambiente inmejorable.'
+  },
+  {
+    image: 'sole_rosso.webp',
+    name: 'Sole Rosso',
+    stars: '★★★★★',
+    resena: 'El verdadero sabor mediterráneo. Ingredientes frescos y recetas clásicas que te encantarán.'
   }
 ];
 
