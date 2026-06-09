@@ -579,6 +579,11 @@ function formatNumber(num) {
 // ============================================
 window.addEventListener('DOMContentLoaded', function() {
   initVisualGallery();
+  
+  // Activar Gastronomía por defecto
+  var btnGastro = document.querySelector('.gal-filter-btn[data-category="restaurantes"]');
+  if(btnGastro) filterGallery('restaurantes', btnGastro);
+
   initVisitorCounter();
   
   // Rotación suave del Deck del Hero

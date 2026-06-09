@@ -197,8 +197,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
          item en window.GALERIA_DATOS (script.js lÃ­nea 14).
          ============================================ -->
     <div class="gal-filter-tabs reveal">
+      <!-- "Gastronomia" filtra los restaurantes -->
+      <button class="gal-filter-btn"
+              data-category="restaurantes"
+              onclick="filterGallery('restaurantes', this)">
+        &#127860; Gastronomi­a
+      </button>
       <!-- "Todos" muestra todas las fotos sin filtrar -->
-      <button class="gal-filter-btn active"
+      <button class="gal-filter-btn"
               data-category="todos"
               onclick="filterGallery('todos', this)">
         Todos
@@ -214,12 +220,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               data-category="hoteles"
               onclick="filterGallery('hoteles', this)">
         &#127968; Hospedaje
-      </button>
-      <!-- "Gastronomia" filtra los restaurantes -->
-      <button class="gal-filter-btn"
-              data-category="restaurantes"
-              onclick="filterGallery('restaurantes', this)">
-        &#127860; Gastronomi­a
       </button>
       <!-- "Recreación" filtra cultura y turismo -->
       <button class="gal-filter-btn"
@@ -1772,5 +1772,6 @@ function toggleChat(){
  <script src="script.js"></script>
 </body>
 </html>
+
 
 
