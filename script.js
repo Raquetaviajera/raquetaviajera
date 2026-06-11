@@ -127,7 +127,7 @@ window.RECOMENDACIONES_GASTRONOMIA = [
     resena: 'Si visitas Bogotá, esta fusión peruano-colombiana es parada obligatoria. Sabor, creatividad y atención de primer nivel.'
   },
   {
-    image: 'la_kasta.webp',
+    image: 'la_kasta_carne.webp',
     name: 'La Kasta',
     stars: '★★★★☆',
     resena: 'Fuego, sabor y espectáculo en cada mesa. La Kasta convierte una carne flameada en una experiencia que se graba en la memoria.'
