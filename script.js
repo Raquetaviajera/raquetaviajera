@@ -117,7 +117,7 @@ window.RECOMENDACIONES_GASTRONOMIA = [
   {
     image: 'la_bruja2.webp',
     name: 'Restaurante La Bruja',
-    stars: '★★★★★'
+    stars: '★★★★★',
     resena: 'Si buscas una experiencia que combine buena mesa y misterio real, La Bruja es parada obligatoria. Dicen que no solo los comensales se quedan con ganas de volver.'
   },
   {
