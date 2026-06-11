@@ -117,26 +117,26 @@ window.RECOMENDACIONES_GASTRONOMIA = [
   {
     image: 'la_bruja2.webp',
     name: 'Restaurante La Bruja',
-    stars: '★★★★★',
-    resena: 'Una experiencia gastronómica mágica con sabores únicos y una atención de primera.'
+    stars: '★★★★★'
+    resena: 'Si buscas una experiencia que combine buena mesa y misterio real, La Bruja es parada obligatoria. Dicen que no solo los comensales se quedan con ganas de volver.'
   },
   {
     image: 'renne_peruvian.webp',
     name: 'Renne Peruvian',
     stars: '★★★★★',
-    resena: 'Auténtica comida peruana que transporta tus sentidos directamente a los sabores de Lima.'
+    resena: 'Si visitas Bogotá, esta fusión peruano-colombiana es parada obligatoria. Sabor, creatividad y atención de primer nivel.'
   },
   {
     image: 'la_kasta.webp',
     name: 'La Kasta',
     stars: '★★★★☆',
-    resena: 'Un lugar increíble para compartir y disfrutar de excelentes platos en un ambiente inmejorable.'
+    resena: 'Fuego, sabor y espectáculo en cada mesa. La Kasta convierte una carne flameada en una experiencia que se graba en la memoria.'
   },
   {
     image: 'sole_rosso.webp',
     name: 'Sole Rosso',
     stars: '★★★★★',
-    resena: 'El verdadero sabor mediterráneo. Ingredientes frescos y recetas clásicas que te encantarán.'
+    resena: 'Si visitas Bogotá y extrañas el Mediterráneo, Sole Rosso es parada obligatoria. Italia y el mar en un solo plato, en el corazón de Colombia.'
   }
 ];
 
